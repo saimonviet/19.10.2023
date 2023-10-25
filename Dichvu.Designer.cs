@@ -143,6 +143,7 @@
             Them.TabIndex = 4;
             Them.Text = "Thêm";
             Them.UseVisualStyleBackColor = false;
+            Them.Click += Them_Click;
             // 
             // xoa
             // 
