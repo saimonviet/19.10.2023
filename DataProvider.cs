@@ -22,5 +22,23 @@ namespace GiaoDien_qlpks.DAO
             connection.Close();
             return data;    
         }
+            public bool CheckLogin(string tendangnhap, string matkhaucu)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSTR))
+                {
+                    connection.Open();
+
+                    string query = "SELECT COUNT(*) FROM [dbo].[Table_USER] WHERE USERNAME = @TenDangNhap AND PASSWORD = @MatKhauCu";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@TenDangNhap", tendangnhap);
+                    command.Parameters.AddWithValue("@MatKhauCu", matkhaucu);
+
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        
+
     }
+
 }
