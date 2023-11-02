@@ -25,25 +25,6 @@ namespace GiaoDien_qlpks
             string query = "SELECT * FROM [dbo].[Table.KHACHHANG]";
             DataProvider provider = new DataProvider();
             dataGridView1.DataSource = provider.ExecuteQuery(query);
-
-            /*try
-            {
-                string connectionSTR = @"Data Source=LAPTOP-JKMABAVK\TESTSQL;Initial Catalog=QUANLYPHONGKHACHSAN;Integrated Security=True;TrustServerCertificate=true;";
-                SqlConnection connection = new SqlConnection(connectionSTR);
-                string query = "SELECT * FROM [dbo].[Table.KHACHHANG]";
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                DataTable data = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-                connection.Close();
-                dataGridView1.DataSource = data;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }*/
-
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
