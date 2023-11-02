@@ -161,11 +161,11 @@
             // 
             btcapnhap.BackColor = Color.FromArgb(255, 128, 128);
             btcapnhap.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btcapnhap.Location = new Point(558, 304);
+            btcapnhap.Location = new Point(568, 304);
             btcapnhap.Name = "btcapnhap";
-            btcapnhap.Size = new Size(105, 39);
+            btcapnhap.Size = new Size(87, 39);
             btcapnhap.TabIndex = 6;
-            btcapnhap.Text = "Cập nhật";
+            btcapnhap.Text = "Sửa";
             btcapnhap.UseVisualStyleBackColor = false;
             btcapnhap.Click += btcapnhap_Click;
             // 

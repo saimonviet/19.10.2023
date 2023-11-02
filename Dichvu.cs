@@ -33,6 +33,19 @@ namespace GiaoDien_qlpks
 
         private void btcapnhap_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(tensanpham.Text)&& !string.IsNullOrEmpty(dongia.Text))
+            {
+                string query = $"UPDATE [dbo].[Table_SANPHAM] SET DONGIA = '{dongia.Text}' WHERE TENSANPHAM = '{tensanpham.Text}'";
+                DataProvider provider = new DataProvider(); 
+                provider.ExecuteQuery(query);
+                loaddichvulist();
+                tensanpham.Text = "";
+                dongia.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Vui Lòng Điền Đầy Đủ Thông Tin !");
+            }
         }
 
 
@@ -84,32 +97,33 @@ namespace GiaoDien_qlpks
             }
         }
 
-        private void Them_Click(object sender, EventArgs e) { 
-                // Kiểm tra xem TextBox có dữ liệu hay không
-                if (!string.IsNullOrEmpty(tensanpham.Text) && !string.IsNullOrEmpty(dongia.Text))
-                {
-                    // Lấy giá trị từ TextBox
-                    string tensp = tensanpham.Text;
-                    string gia = dongia.Text;
+        private void Them_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem TextBox có dữ liệu hay không
+            if (!string.IsNullOrEmpty(tensanpham.Text) && !string.IsNullOrEmpty(dongia.Text))
+            {
+                // Lấy giá trị từ TextBox
+                string tensp = tensanpham.Text;
+                string gia = dongia.Text;
 
-                    // Tạo câu truy vấn SQL INSERT
-                    string query = $"INSERT INTO [dbo].[Table_SANPHAM] (TENSANPHAM, DONGIA) VALUES ('{tensp}', '{gia}')";
+                // Tạo câu truy vấn SQL INSERT
+                string query = $"INSERT INTO [dbo].[Table_SANPHAM] (TENSANPHAM, DONGIA) VALUES ('{tensp}', '{gia}')";
 
-                    // Sử dụng class DataProvider để thực hiện truy vấn
-                    DataProvider provider = new DataProvider();
-                    provider.ExecuteQuery(query);
+                // Sử dụng class DataProvider để thực hiện truy vấn
+                DataProvider provider = new DataProvider();
+                provider.ExecuteQuery(query);
 
-                    // Cập nhật DataGridView
-                    loaddichvulist();
+                // Cập nhật DataGridView
+                loaddichvulist();
 
-                    // Xóa dữ liệu từ TextBox sau khi thêm vào DataGridView
-                    tensanpham.Text = "";
-                    dongia.Text = "";
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
-                }
+                // Xóa dữ liệu từ TextBox sau khi thêm vào DataGridView
+                tensanpham.Text = "";
+                dongia.Text = "";
             }
+            else
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
+            }
+        }
     }
 }
