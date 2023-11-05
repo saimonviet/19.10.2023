@@ -53,7 +53,7 @@ namespace GiaoDien_qlpks
                 if (provider.CheckLogin(tendangnhap, matkhau))
                 {
                     MessageBox.Show(" Đăng nhập thành công !", "Thông báo");
-                    Form Trangchu = new Trangchu();
+                    Form Trangchu = new Trangchu(tendangnhap);
                     this.Hide();
                     Trangchu.ShowDialog();
                     this.Show();

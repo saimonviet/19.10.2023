@@ -33,10 +33,10 @@ namespace GiaoDien_qlpks
 
         private void btcapnhap_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tensanpham.Text)&& !string.IsNullOrEmpty(dongia.Text))
+            if (!string.IsNullOrEmpty(tensanpham.Text) && !string.IsNullOrEmpty(dongia.Text))
             {
                 string query = $"UPDATE [dbo].[Table_SANPHAM] SET DONGIA = '{dongia.Text}' WHERE TENSANPHAM = '{tensanpham.Text}'";
-                DataProvider provider = new DataProvider(); 
+                DataProvider provider = new DataProvider();
                 provider.ExecuteQuery(query);
                 loaddichvulist();
                 tensanpham.Text = "";
@@ -124,6 +124,11 @@ namespace GiaoDien_qlpks
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -76,14 +76,14 @@
             // ThongtincanhanToolStripMenuItem
             // 
             ThongtincanhanToolStripMenuItem.Name = "ThongtincanhanToolStripMenuItem";
-            ThongtincanhanToolStripMenuItem.Size = new Size(180, 30);
-            ThongtincanhanToolStripMenuItem.Text = "Account";
+            ThongtincanhanToolStripMenuItem.Size = new Size(191, 30);
+            ThongtincanhanToolStripMenuItem.Text = "Đổi mật khẩu";
             ThongtincanhanToolStripMenuItem.Click += ThongtincanhanToolStripMenuItem_Click;
             // 
             // DangxuatToolStripMenuItem
             // 
             DangxuatToolStripMenuItem.Name = "DangxuatToolStripMenuItem";
-            DangxuatToolStripMenuItem.Size = new Size(180, 30);
+            DangxuatToolStripMenuItem.Size = new Size(191, 30);
             DangxuatToolStripMenuItem.Text = "Đăng xuất";
             DangxuatToolStripMenuItem.Click += DangxuatToolStripMenuItem_Click;
             // 

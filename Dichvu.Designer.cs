@@ -113,6 +113,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(390, 72);
             panel3.TabIndex = 3;
+            panel3.Paint += panel3_Paint;
             // 
             // dongia
             // 

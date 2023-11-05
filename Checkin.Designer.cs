@@ -81,6 +81,7 @@
             // 
             cbsophong.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             cbsophong.FormattingEnabled = true;
+            cbsophong.Items.AddRange(new object[] { "122" });
             cbsophong.Location = new Point(171, 251);
             cbsophong.Name = "cbsophong";
             cbsophong.Size = new Size(237, 31);
@@ -97,6 +98,7 @@
             btcheckin.TabIndex = 7;
             btcheckin.Text = "Đặt phòng";
             btcheckin.UseVisualStyleBackColor = false;
+            btcheckin.Click += btcheckin_Click;
             // 
             // panel5
             // 
@@ -110,6 +112,7 @@
             // ngaytra
             // 
             ngaytra.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            ngaytra.Format = DateTimePickerFormat.Short;
             ngaytra.Location = new Point(164, 8);
             ngaytra.Name = "ngaytra";
             ngaytra.Size = new Size(237, 31);
@@ -152,6 +155,7 @@
             // 
             cbloaiphong.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             cbloaiphong.FormattingEnabled = true;
+            cbloaiphong.Items.AddRange(new object[] { "1", "2", "3", "4" });
             cbloaiphong.Location = new Point(166, 11);
             cbloaiphong.Name = "cbloaiphong";
             cbloaiphong.Size = new Size(237, 31);
@@ -180,10 +184,12 @@
             // ngaydat
             // 
             ngaydat.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            ngaydat.Format = DateTimePickerFormat.Short;
             ngaydat.Location = new Point(163, 8);
             ngaydat.Name = "ngaydat";
             ngaydat.Size = new Size(238, 31);
             ngaydat.TabIndex = 2;
+            ngaydat.ValueChanged += ngaydat_ValueChanged;
             // 
             // label5
             // 

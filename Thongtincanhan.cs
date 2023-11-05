@@ -13,9 +13,10 @@ namespace GiaoDien_qlpks
 {
     public partial class Thongtincanhan : Form
     {
-        public Thongtincanhan()
+        public Thongtincanhan(string tendangnhap)
         {
             InitializeComponent();
+            tendangnhap1.Text = tendangnhap;
         }
 
 

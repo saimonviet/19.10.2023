@@ -51,7 +51,7 @@ namespace GiaoDien_qlpks
                 tbtenkhach.Text = row.Cells["TENKHACHHANG"].Value.ToString();
                 tbsđt.Text = row.Cells["SĐT"].Value.ToString();
                 tbcccd.Text = row.Cells["CCCD"].Value.ToString();
-                tbidphong.Text = row.Cells["IDPHONG"].Value.ToString();
+                sophong.Text = row.Cells["SOPHONG"].Value.ToString();
                 // "Tên_Cột" là tên của cột mà bạn muốn lấy dữ liệu từ đó
             }
         }
@@ -67,6 +67,26 @@ namespace GiaoDien_qlpks
         }
 
         private void chinhsua_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbmakhachhang.Text) && !string.IsNullOrEmpty(tbtenkhach.Text) && !string.IsNullOrEmpty(tbsđt.Text) && !string.IsNullOrEmpty(tbcccd.Text) && !string.IsNullOrEmpty(sophong.Text))
+            {
+                string query = $"UPDATE [dbo].[Table.KHACHHANG] SET TENKHACHHANG = '{tbtenkhach.Text}',SĐT = '{tbsđt.Text}',CCCD = '{tbcccd.Text}',SOPHONG = '{sophong.Text}' WHERE MAKHACHHANG = '{tbmakhachhang.Text}'";
+                DataProvider provider = new DataProvider();
+                provider.ExecuteQuery(query);
+                loadkhachhanglist();
+                tbmakhachhang.Text = "";
+                tbtenkhach.Text = "";
+                tbcccd.Text = "";
+                tbsđt.Text = "";
+                sophong.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Vui Lòng Điền Đầy Đủ Thông Tin !");
+            }
+        }
+
+        private void tbidphong_TextChanged(object sender, EventArgs e)
         {
 
         }

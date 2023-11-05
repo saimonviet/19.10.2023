@@ -37,8 +37,28 @@ namespace GiaoDien_qlpks.DAO
                     return count > 0;
                 }
             }
-        
+           public object ExecuteScalar(string query)
+            {
+                object result = -1;
 
+                using (SqlConnection connection = new SqlConnection(connectionSTR))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        try
+                        {
+                            connection.Open();
+                            result = command.ExecuteScalar();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi");
+                        }
+                    }
+                }
+
+                return result;
+            }
     }
 
 }

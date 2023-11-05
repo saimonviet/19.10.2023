@@ -17,21 +17,21 @@ namespace GiaoDien_qlpks
         {
             InitializeComponent();
         }
-        void loadphong( string selectedPhong)
+        void loadphong(string selectedPhong)
         {
             if (string.IsNullOrEmpty(selectedPhong)) { return; }
             string query = "";
             if (selectedPhong == "Danh sách phòng trống")
-                {
-                     query = "SELECT SOPHONG FROM [dbo].[Table_IDPHONG] WHERE TRANGTHAI = 1 ";
-                }
+            {
+                query = "SELECT SOPHONG FROM [dbo].[Table_IDPHONG] WHERE TRANGTHAI = 1 ";
+            }
 
             if (selectedPhong == "Danh sách phòng đã đặt")
             {
-                     query = "SELECT SOPHONG FROM [dbo].[Table_IDPHONG] WHERE TRANGTHAI = 0 ";
+                query = "SELECT SOPHONG FROM [dbo].[Table_IDPHONG] WHERE TRANGTHAI = 0 ";
             }
             DataProvider provider = new DataProvider();
-                dtgvdanhsachphong.DataSource = provider.ExecuteQuery(query);
+            dtgvdanhsachphong.DataSource = provider.ExecuteQuery(query);
 
         }
 
@@ -44,11 +44,21 @@ namespace GiaoDien_qlpks
         {
 
         }
-
         private void cbxem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedPhong = cbxem.SelectedItem.ToString();
-            loadphong(selectedPhong);
+            if (cbxem.SelectedItem != null)
+            {
+                string?  selectedPhong = cbxem.SelectedItem.ToString();
+                if (selectedPhong != null)
+                {
+                    loadphong(selectedPhong);
+                }
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

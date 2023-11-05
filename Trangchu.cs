@@ -12,9 +12,11 @@ namespace GiaoDien_qlpks
 {
     public partial class Trangchu : Form
     {
-        public Trangchu()
+        private string tendangnhap;
+        public Trangchu(string tendangnhap)
         {
             InitializeComponent();
+            this.tendangnhap= tendangnhap;  
         }
 
         private void QuanliphongToolStripMenuItem_Click(object sender, EventArgs e)
@@ -27,7 +29,7 @@ namespace GiaoDien_qlpks
 
         private void ThongtincanhanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form Thongtincanhan = new Thongtincanhan();
+            Form Thongtincanhan = new Thongtincanhan(tendangnhap);
             this.Hide();
             Thongtincanhan.ShowDialog();
             this.Show();

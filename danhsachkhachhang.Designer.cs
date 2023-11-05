@@ -35,7 +35,7 @@
             chinhsua = new Button();
             panel2 = new Panel();
             panel7 = new Panel();
-            tbidphong = new TextBox();
+            sophong = new TextBox();
             label4 = new Label();
             panel4 = new Panel();
             tbtenkhach = new TextBox();
@@ -105,11 +105,11 @@
             // 
             chinhsua.BackColor = Color.FromArgb(255, 128, 128);
             chinhsua.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            chinhsua.Location = new Point(140, 5);
+            chinhsua.Location = new Point(105, 12);
             chinhsua.Name = "chinhsua";
-            chinhsua.Size = new Size(100, 42);
+            chinhsua.Size = new Size(174, 42);
             chinhsua.TabIndex = 1;
-            chinhsua.Text = "Chỉnh sửa";
+            chinhsua.Text = "Chỉnh sửa thông tin";
             chinhsua.UseVisualStyleBackColor = false;
             chinhsua.Click += chinhsua_Click;
             // 
@@ -128,19 +128,19 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(tbidphong);
+            panel7.Controls.Add(sophong);
             panel7.Controls.Add(label4);
             panel7.Location = new Point(0, 325);
             panel7.Name = "panel7";
             panel7.Size = new Size(377, 61);
             panel7.TabIndex = 4;
             // 
-            // tbidphong
+            // sophong
             // 
-            tbidphong.Location = new Point(152, 16);
-            tbidphong.Name = "tbidphong";
-            tbidphong.Size = new Size(203, 23);
-            tbidphong.TabIndex = 1;
+            sophong.Location = new Point(152, 18);
+            sophong.Name = "sophong";
+            sophong.Size = new Size(203, 23);
+            sophong.TabIndex = 2;
             // 
             // label4
             // 
@@ -149,9 +149,9 @@
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(3, 16);
             label4.Name = "label4";
-            label4.Size = new Size(81, 21);
+            label4.Size = new Size(84, 21);
             label4.TabIndex = 0;
-            label4.Text = "ID phòng :";
+            label4.Text = "Số phòng :";
             // 
             // panel4
             // 
@@ -316,8 +316,8 @@
         private TextBox tbcccd;
         private Label label3;
         private Panel panel7;
-        private TextBox tbidphong;
         private Label label4;
         private TextBox tbtenkhachhang;
+        private TextBox sophong;
     }
 }
