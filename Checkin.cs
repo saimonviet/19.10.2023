@@ -77,7 +77,22 @@ namespace GiaoDien_qlpks
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi");
             }
         }
+        private void cbloaiphong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbloaiphong.SelectedItem != null)
+            {
+                string ? loaiphong = cbloaiphong.SelectedItem.ToString();
 
+                // Truy vấn cơ sở dữ liệu để lấy danh sách phòng thoả mãn điều kiện.
+                string query = $"SELECT SOPHONG FROM [dbo].[Table_SOPHONG] WHERE IDLOAIPHONG  = '{loaiphong}' AND TRANGTHAI = 1";
+
+                DataProvider provider = new DataProvider();
+                // Hiển thị danh sách phòng vào ComboBox số phòng.
+                cbsophong.DataSource = provider.ExecuteQuery(query); ;
+                cbsophong.DisplayMember = "SOPHONG";
+                cbsophong.ValueMember = "SOPHONG";
+            }
+        }
 
 
         private void ngaydat_ValueChanged(object sender, EventArgs e)
