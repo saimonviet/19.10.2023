@@ -57,17 +57,17 @@ namespace GiaoDien_qlpks
                 if (!string.IsNullOrEmpty(tbten.Text) && !string.IsNullOrEmpty(tbsđt.Text) && !string.IsNullOrEmpty(tbcccd.Text) && cbsophong.SelectedItem != null)
                 {
                     int sophong = (int)cbsophong.SelectedValue;
-                    //MessageBox.Show("Giá trị của cbsophong.SelectedItem: " + sophong);
-
                     DataProvider provider = new DataProvider();
                     string insertKhachHangQuery = $"INSERT INTO [dbo].[Table.KHACHHANG] (TENKHACHHANG, SĐT, CCCD, SOPHONG) OUTPUT INSERTED.MAKHACHHANG VALUES ('{tbten.Text}', '{tbsđt.Text}', '{tbcccd.Text}', '{sophong}')";
-
                     int MaKhachHang = Convert.ToInt32(provider.ExecuteScalar(insertKhachHangQuery));
                     string ngayDatFormatted = ngaydat.Value.ToString("yyyy-MM-dd");
                     string ngayTraFormatted = ngaytra.Value.ToString("yyyy-MM-dd");
                     string insertDatphongQuery = $"INSERT INTO [dbo].[Table_DATPHONG] (MAKHACHHANG, NGAYDAT, NGAYTRA) VALUES ('{MaKhachHang}', '{ngayDatFormatted}', '{ngayTraFormatted}')";
 
                     provider.ExecuteQuery(insertDatphongQuery);
+
+                    string updatetrangthai = $"UPDATE [dbo].[Table_SOPHONG] SET TRANGTHAI = 0 WHERE SOPHONG = '{sophong}'";
+                    provider.ExecuteQuery(updatetrangthai);
 
                     MessageBox.Show("Đặt phòng thành công! ", "Thông báo!");
                 }
@@ -91,27 +91,14 @@ namespace GiaoDien_qlpks
         {
             if (cbloaiphong.SelectedItem != null)
             {
-                string? loaiphong = cbloaiphong.SelectedItem.ToString();
-                int LoaiPhong;
-
-                if (int.TryParse(loaiphong, out LoaiPhong))
-                {
-                    // Giá trị loaiPhong là số nguyên hợp lý, bạn có thể sử dụng nó ở đây
-                    // Truy vấn cơ sở dữ liệu để lấy danh sách phòng thoả mãn điều kiện.
+                    string? loaiphong = cbloaiphong.SelectedItem.ToString();
                     string query = $"SELECT SOPHONG FROM [dbo].[Table_SOPHONG] WHERE IDLOAIPHONG  = '{loaiphong}' AND TRANGTHAI = 1";
                     DataProvider provider = new DataProvider();
                     DataTable dataTable = provider.ExecuteQuery(query);
-
-                    // Hiển thị danh sách phòng vào ComboBox số phòng.
                     cbsophong.DataSource = dataTable;
                     cbsophong.DisplayMember = "SOPHONG";
                     cbsophong.ValueMember = "SOPHONG";
-                }
-                else
-                {
-                    MessageBox.Show("Giá trị không hợp lý!", "Lỗi");
-                }
-
+       
             }
 
         }

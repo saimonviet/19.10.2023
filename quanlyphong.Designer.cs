@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabquanly = new TabControl();
             tabkiemtra = new TabPage();
+            panel4 = new Panel();
             btcapnhap = new Button();
+            label5 = new Label();
             panel3 = new Panel();
             vesinhphong = new TextBox();
             label4 = new Label();
@@ -50,8 +52,11 @@
             cbxem = new ComboBox();
             label6 = new Label();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
             tabquanly.SuspendLayout();
             tabkiemtra.SuspendLayout();
+            panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -71,8 +76,8 @@
             // 
             // tabkiemtra
             // 
-            tabkiemtra.BackColor = Color.MistyRose;
-            tabkiemtra.Controls.Add(btcapnhap);
+            tabkiemtra.BackColor = Color.FromArgb(255, 192, 192);
+            tabkiemtra.Controls.Add(panel4);
             tabkiemtra.Controls.Add(panel3);
             tabkiemtra.Controls.Add(panel2);
             tabkiemtra.Controls.Add(panel1);
@@ -87,30 +92,56 @@
             tabkiemtra.Text = "Kiểm tra phòng";
             tabkiemtra.Click += tabkiemtra_Click;
             // 
+            // panel4
+            // 
+            panel4.BackColor = Color.MistyRose;
+            panel4.Controls.Add(radioButton2);
+            panel4.Controls.Add(radioButton1);
+            panel4.Controls.Add(btcapnhap);
+            panel4.Controls.Add(label5);
+            panel4.Location = new Point(6, 334);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(701, 60);
+            panel4.TabIndex = 8;
+            panel4.Paint += panel4_Paint_1;
+            // 
             // btcapnhap
             // 
             btcapnhap.BackColor = Color.IndianRed;
             btcapnhap.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            btcapnhap.Location = new Point(310, 349);
+            btcapnhap.Location = new Point(622, 8);
             btcapnhap.Name = "btcapnhap";
-            btcapnhap.Size = new Size(117, 45);
+            btcapnhap.Size = new Size(79, 43);
             btcapnhap.TabIndex = 7;
-            btcapnhap.Text = "Cập nhập";
+            btcapnhap.Text = "Lưu";
             btcapnhap.UseVisualStyleBackColor = false;
+            btcapnhap.Click += btcapnhap_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.LightCoral;
+            label5.Location = new Point(9, 18);
+            label5.Name = "label5";
+            label5.Size = new Size(206, 25);
+            label5.TabIndex = 0;
+            label5.Text = "Cập nhập vệ sinh phòng";
             // 
             // panel3
             // 
+            panel3.BackColor = Color.MistyRose;
             panel3.Controls.Add(vesinhphong);
             panel3.Controls.Add(label4);
-            panel3.Location = new Point(3, 255);
+            panel3.Location = new Point(6, 245);
             panel3.Name = "panel3";
-            panel3.Size = new Size(704, 64);
+            panel3.Size = new Size(698, 64);
             panel3.TabIndex = 5;
             // 
             // vesinhphong
             // 
             vesinhphong.Location = new Point(241, 12);
             vesinhphong.Name = "vesinhphong";
+            vesinhphong.ReadOnly = true;
             vesinhphong.Size = new Size(454, 31);
             vesinhphong.TabIndex = 1;
             // 
@@ -126,17 +157,20 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.MistyRose;
             panel2.Controls.Add(trangthai);
             panel2.Controls.Add(label3);
-            panel2.Location = new Point(3, 166);
+            panel2.Location = new Point(6, 158);
             panel2.Name = "panel2";
             panel2.Size = new Size(698, 64);
             panel2.TabIndex = 4;
+            panel2.Paint += panel2_Paint;
             // 
             // trangthai
             // 
             trangthai.Location = new Point(241, 15);
             trangthai.Name = "trangthai";
+            trangthai.ReadOnly = true;
             trangthai.Size = new Size(454, 31);
             trangthai.TabIndex = 1;
             // 
@@ -144,7 +178,7 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.LightCoral;
-            label3.Location = new Point(9, 15);
+            label3.Location = new Point(9, 18);
             label3.Name = "label3";
             label3.Size = new Size(89, 25);
             label3.TabIndex = 0;
@@ -152,9 +186,10 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.MistyRose;
             panel1.Controls.Add(loaiphong);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(0, 77);
+            panel1.Location = new Point(6, 68);
             panel1.Name = "panel1";
             panel1.Size = new Size(698, 64);
             panel1.TabIndex = 3;
@@ -163,6 +198,7 @@
             // 
             loaiphong.Location = new Point(241, 12);
             loaiphong.Name = "loaiphong";
+            loaiphong.ReadOnly = true;
             loaiphong.Size = new Size(454, 31);
             loaiphong.TabIndex = 1;
             // 
@@ -170,7 +206,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.LightCoral;
-            label2.Location = new Point(12, 12);
+            label2.Location = new Point(9, 18);
             label2.Name = "label2";
             label2.Size = new Size(102, 25);
             label2.TabIndex = 0;
@@ -179,22 +215,22 @@
             // cbchonphong
             // 
             cbchonphong.FormattingEnabled = true;
-            cbchonphong.Items.AddRange(new object[] { "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130" });
-            cbchonphong.Location = new Point(241, 23);
+            cbchonphong.Location = new Point(247, 15);
             cbchonphong.Name = "cbchonphong";
             cbchonphong.Size = new Size(457, 31);
             cbchonphong.TabIndex = 2;
+            cbchonphong.SelectedIndexChanged += cbchonphong_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.LightCoral;
-            label1.Location = new Point(12, 23);
+            label1.Location = new Point(13, 16);
             label1.Name = "label1";
             label1.Size = new Size(112, 25);
             label1.TabIndex = 0;
             label1.Text = "Chọn phòng";
-            label1.Click += label1_Click;
+            label1.Click += label1_Click_1;
             // 
             // tabdanhsach
             // 
@@ -203,42 +239,42 @@
             tabdanhsach.Controls.Add(cbxem);
             tabdanhsach.Controls.Add(label6);
             tabdanhsach.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tabdanhsach.Location = new Point(4, 24);
+            tabdanhsach.Location = new Point(4, 32);
             tabdanhsach.Name = "tabdanhsach";
             tabdanhsach.Padding = new Padding(3);
-            tabdanhsach.Size = new Size(710, 432);
+            tabdanhsach.Size = new Size(710, 424);
             tabdanhsach.TabIndex = 1;
             tabdanhsach.Text = "Danh sách phòng";
             // 
             // dtgvdanhsachphong
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dtgvdanhsachphong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgvdanhsachphong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgvdanhsachphong.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dtgvdanhsachphong.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dtgvdanhsachphong.DefaultCellStyle = dataGridViewCellStyle5;
             dtgvdanhsachphong.Location = new Point(3, 43);
             dtgvdanhsachphong.Name = "dtgvdanhsachphong";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dtgvdanhsachphong.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dtgvdanhsachphong.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dtgvdanhsachphong.RowTemplate.Height = 25;
             dtgvdanhsachphong.Size = new Size(704, 378);
             dtgvdanhsachphong.TabIndex = 3;
@@ -270,6 +306,30 @@
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(251, 18);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(137, 29);
+            radioButton1.TabIndex = 8;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "ĐÃ DỌN DẸP";
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(435, 18);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(161, 29);
+            radioButton2.TabIndex = 9;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "CHƯA DỌN DẸP";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
             // quanlyphong
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
@@ -281,9 +341,12 @@
             Name = "quanlyphong";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý phòng";
+            Load += quanlyphong_Load;
             tabquanly.ResumeLayout(false);
             tabkiemtra.ResumeLayout(false);
             tabkiemtra.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
@@ -317,5 +380,9 @@
         private ComboBox cbxem;
         private DataGridView dtgvdanhsachphong;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private Panel panel4;
+        private Label label5;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }

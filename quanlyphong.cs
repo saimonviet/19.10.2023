@@ -1,5 +1,7 @@
 ﻿using GiaoDien_qlpks.DAO;
+using Microsoft.Data.SqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,12 @@ namespace GiaoDien_qlpks
         public quanlyphong()
         {
             InitializeComponent();
+            string query = "SELECT SOPHONG FROM [dbo].[Table_SOPHONG]";
+            DataProvider provider = new DataProvider();
+            DataTable dataTable = provider.ExecuteQuery(query);
+            cbchonphong.DataSource = dataTable;
+            cbchonphong.DisplayMember = "SOPHONG";
+            cbchonphong.ValueMember = "SOPHONG";
         }
         void loadphong(string selectedPhong)
         {
@@ -23,12 +31,12 @@ namespace GiaoDien_qlpks
             string query = "";
             if (selectedPhong == "Danh sách phòng trống")
             {
-                query = "SELECT SOPHONG FROM [dbo].[Table_IDPHONG] WHERE TRANGTHAI = 1 ";
+                query = "SELECT SOPHONG FROM [dbo].[Table_SOPHONG] WHERE TRANGTHAI = 1 ";
             }
 
             if (selectedPhong == "Danh sách phòng đã đặt")
             {
-                query = "SELECT SOPHONG FROM [dbo].[Table_IDPHONG] WHERE TRANGTHAI = 0 ";
+                query = "SELECT SOPHONG FROM [dbo].[Table_SOPHONG] WHERE TRANGTHAI = 0 ";
             }
             DataProvider provider = new DataProvider();
             dtgvdanhsachphong.DataSource = provider.ExecuteQuery(query);
@@ -48,7 +56,7 @@ namespace GiaoDien_qlpks
         {
             if (cbxem.SelectedItem != null)
             {
-                string?  selectedPhong = cbxem.SelectedItem.ToString();
+                string? selectedPhong = cbxem.SelectedItem.ToString();
                 if (selectedPhong != null)
                 {
                     loadphong(selectedPhong);
@@ -57,6 +65,97 @@ namespace GiaoDien_qlpks
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbchonphong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int sophong = (int)cbchonphong.SelectedValue;
+            string query = $"SELECT TRANGTHAI, IDLOAIPHONG, VESINHPHONG FROM [dbo].[Table_SOPHONG] WHERE SOPHONG = '{sophong}'";
+            DataProvider provider = new DataProvider();
+            using (SqlDataReader reader = provider.ExecuteReader(query))
+            {
+                if (reader.Read())
+                {
+                    string? trangthai1 = reader["TRANGTHAI"].ToString();
+                    loaiphong.Text = reader["IDLOAIPHONG"].ToString();
+                    string? vesinhphong1 = reader["VESINHPHONG"].ToString();
+                    if (!string.IsNullOrEmpty(trangthai1) && !string.IsNullOrEmpty(vesinhphong1))
+                    {
+
+                        if (trangthai1.Equals("FALSE", StringComparison.OrdinalIgnoreCase))
+                        {
+                            trangthai.Text = "PHÒNG ĐÃ ĐƯỢC ĐẶT";
+                        }
+                        else if (trangthai1.Equals("TRUE", StringComparison.OrdinalIgnoreCase))
+                        {
+                            trangthai.Text = "PHÒNG CÒN TRỐNG";
+                        }
+                        else
+                        {
+                            trangthai.Text = "TRẠNG THÁI KHÔNG XÁC ĐỊNH";
+                        }
+
+                        if (vesinhphong1.Equals("TRUE", StringComparison.OrdinalIgnoreCase))
+                        {
+                            vesinhphong.Text = "PHÒNG ĐÃ ĐƯỢC DỌN DẸP";
+                        }
+                        else if (vesinhphong1.Equals("FALSE", StringComparison.OrdinalIgnoreCase))
+                        {
+                            vesinhphong.Text = "PHÒNG CHƯA ĐƯỢC DỌN DẸP";
+                        }
+                        else
+                        {
+                            vesinhphong.Text = "VESINHPHONG KHÔNG XÁC ĐỊNH";
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu phù hợp");
+                }
+
+            }
+
+        }
+
+        private void btcapnhap_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quanlyphong_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

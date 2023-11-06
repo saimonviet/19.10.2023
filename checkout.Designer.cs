@@ -273,9 +273,9 @@
             label2.BackColor = Color.FromArgb(255, 128, 128);
             label2.Location = new Point(393, 16);
             label2.Name = "label2";
-            label2.Size = new Size(87, 25);
+            label2.Size = new Size(90, 25);
             label2.TabIndex = 2;
-            label2.Text = "ID Phòng";
+            label2.Text = "Số Phòng";
             label2.Click += label2_Click;
             // 
             // texttenkhach
@@ -348,7 +348,7 @@
             button4.Name = "button4";
             button4.Size = new Size(133, 39);
             button4.TabIndex = 12;
-            button4.Text = "ID Phòng";
+            button4.Text = "Số Phòng";
             button4.UseVisualStyleBackColor = false;
             // 
             // tbmkh
