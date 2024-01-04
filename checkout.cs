@@ -16,45 +16,5 @@ namespace GiaoDien_qlpks
         {
             InitializeComponent();
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void idphong_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tienphong_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Timkiem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Tongtien_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Thanhtoan_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
